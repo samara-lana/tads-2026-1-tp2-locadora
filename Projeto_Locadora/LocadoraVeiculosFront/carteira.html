@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carteira | Locadora de Veículos</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="navbar"></div>
+
+    <main class="container">
+      <div class="page-header">
+        <h1>Carteira do cliente</h1>
+      </div>
+
+      <div class="row g-3 mb-3">
+        <div class="col-md-5">
+          <label class="form-label">Cliente</label>
+          <select class="form-select" id="selCliente">
+            <option value="">Selecione um cliente...</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="painel" class="d-none">
+        <div class="row g-3 mb-3">
+          <div class="col-md-5">
+            <div class="card stat-card h-100">
+              <div class="card-body">
+                <div class="stat-rotulo">Saldo atual</div>
+                <div class="saldo-destaque text-success" id="saldoValor">—</div>
+                <div class="text-muted" id="saldoNome"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Recarregar saldo</h5>
+                <form id="formRecarga" class="row g-2 align-items-end">
+                  <div class="col-sm-5">
+                    <label class="form-label">Valor (R$)</label>
+                    <input type="number" step="0.01" min="0.01" class="form-control" id="campoValor" required />
+                  </div>
+                  <div class="col-sm-5">
+                    <label class="form-label">Descrição</label>
+                    <input type="text" class="form-control" id="campoDescricao" maxlength="200" placeholder="Opcional" />
+                  </div>
+                  <div class="col-sm-2 d-grid">
+                    <button type="submit" class="btn btn-success">Recarregar</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body pb-0">
+            <h5 class="card-title">Extrato de transações</h5>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+              <thead>
+                <tr>
+                  <th>Data</th>
+                  <th>Tipo</th>
+                  <th>Descrição</th>
+                  <th class="text-end">Valor</th>
+                </tr>
+              </thead>
+              <tbody id="tabelaExtrato"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="rodape">Locadora de Veículos &middot; Trabalho Prático 2</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/carteira.js"></script>
+  </body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aluguéis | Locadora de Veículos</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="navbar"></div>
+
+    <main class="container">
+      <div class="page-header">
+        <h1>Aluguéis</h1>
+        <button class="btn btn-primary" id="btnNovo">+ Novo aluguel</button>
+      </div>
+
+      <div class="filtros-bar">
+        <div class="row g-3">
+          <div class="col-md-4">
+            <label class="form-label">Cliente</label>
+            <select class="form-select" id="filtroCliente">
+              <option value="">Todos</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Situação</label>
+            <select class="form-select" id="filtroStatus">
+              <option value="">Todas</option>
+              <option value="1">Em aberto</option>
+              <option value="2">Finalizado</option>
+              <option value="3">Cancelado</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Buscar por veículo</label>
+            <input type="text" class="form-control" id="filtroVeiculo" placeholder="Ex.: Polo" />
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Cliente</th>
+                <th>Veículo</th>
+                <th>Início</th>
+                <th>Fim previsto</th>
+                <th>Devolução</th>
+                <th class="text-end">Diária</th>
+                <th class="text-end">Total</th>
+                <th>Situação</th>
+                <th class="text-end">Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tabela"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <footer class="rodape">Locadora de Veículos &middot; Trabalho Prático 2</footer>
+
+    <!-- Modal novo/editar aluguel -->
+    <div class="modal fade" id="modalForm" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form id="formAluguel">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalTitulo">Novo aluguel</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" id="campoId" />
+              <div class="mb-3">
+                <label class="form-label">Cliente *</label>
+                <select class="form-select" id="campoCliente" required></select>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Veículo *</label>
+                <select class="form-select" id="campoVeiculo" required></select>
+                <div class="form-text">Apenas veículos disponíveis aparecem na lista.</div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Data de início *</label>
+                  <input type="date" class="form-control" id="campoInicio" required />
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Fim previsto *</label>
+                  <input type="date" class="form-control" id="campoFim" required />
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de devolução -->
+    <div class="modal fade" id="modalDevolucao" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form id="formDevolucao">
+            <div class="modal-header">
+              <h5 class="modal-title">Registrar devolução</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" id="devId" />
+              <p class="text-muted" id="devResumo"></p>
+              <div class="mb-3">
+                <label class="form-label">Data da devolução *</label>
+                <input type="date" class="form-control" id="devData" required />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Quilometragem final *</label>
+                <input type="number" step="0.01" min="0" class="form-control" id="devKm" required />
+              </div>
+              <div class="alert alert-info mb-0">
+                O valor total será calculado pela API e debitado da carteira do cliente.
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-success">Confirmar devolução</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/alugueis.js"></script>
+  </body>
+</html>
