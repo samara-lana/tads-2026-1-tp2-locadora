@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mockups de alta fidelidade — Locadora de Veículos (TP2)</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* ---- Estilos do sistema (espelham o front real) ---- */
+      :root { --cor-primaria: #0d6efd; }
+      body { background: #eceff3; color: #212529; }
+      .stat-card { border-left: 4px solid var(--cor-primaria); }
+      .stat-card .stat-valor { font-size: 1.75rem; font-weight: 700; }
+      .stat-card .stat-rotulo { color: #6c757d; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
+      .card { border: none; border-radius: 0.75rem; box-shadow: 0 1px 3px rgba(16,24,40,0.08); }
+      .table thead th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.4px; color: #6c757d; }
+      .filtros-bar { background: #fff; border-radius: 0.75rem; padding: 1rem; box-shadow: 0 1px 3px rgba(16,24,40,0.08); margin-bottom: 1.25rem; }
+      .badge-status-aberto { background-color: #cfe2ff; color: #084298; }
+      .badge-status-finalizado { background-color: #d1e7dd; color: #0f5132; }
+      .badge-status-cancelado { background-color: #f8d7da; color: #842029; }
+      .saldo-destaque { font-size: 2.25rem; font-weight: 700; }
+      .page-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem; margin-bottom: 1.25rem; }
+      .page-header h1 { font-size: 1.6rem; font-weight: 700; margin: 0; }
+
+      /* ---- Moldura da galeria ---- */
+      .doc-head { max-width: 1100px; margin: 0 auto; padding: 36px 16px 8px; }
+      .doc-head h1 { font-weight: 800; font-size: 1.7rem; }
+      .doc-head p { color: #51596b; margin: 4px 0; }
+      .indice { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; }
+      .indice a { font-size: 0.85rem; text-decoration: none; background: #fff; border: 1px solid #dde2ea; border-radius: 999px; padding: 5px 12px; color: #334; }
+      .indice a:hover { background: #0d6efd; color: #fff; border-color: #0d6efd; }
+      .tela-wrap { max-width: 1100px; margin: 26px auto; padding: 0 16px; }
+      .tela-titulo { font-weight: 700; color: #2b3344; margin: 0 0 4px; font-size: 1.05rem; }
+      .tela-desc { color: #6b7280; font-size: 0.88rem; margin: 0 0 12px; }
+      .browser { border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(16,24,40,0.12); border: 1px solid #d7dce4; background: #f4f6f9; }
+      .browser-bar { background: #e4e8ee; padding: 9px 14px; display: flex; align-items: center; gap: 7px; border-bottom: 1px solid #d7dce4; }
+      .browser-bar i { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+      .dot-r { background: #ff5f57; } .dot-y { background: #febc2e; } .dot-g { background: #28c840; }
+      .browser-url { margin-left: 10px; background: #fff; border-radius: 6px; padding: 3px 12px; font-size: 0.78rem; color: #667085; flex: 1; max-width: 420px; }
+      .browser-body { padding: 0; }
+      /* navbar do app */
+      .app-nav { background: #212529; padding: 12px 22px; display: flex; align-items: center; }
+      .app-nav .brand { color: #fff; font-weight: 700; font-size: 1.05rem; }
+      .app-nav .brand .car { color: #ffc107; }
+      .app-nav .links { margin-left: auto; display: flex; gap: 18px; }
+      .app-nav .links span { color: #aeb6c2; font-size: 0.92rem; }
+      .app-nav .links span.ativo { color: #fff; font-weight: 600; }
+      .app-content { padding: 22px 24px 28px; }
+      .legenda-final { max-width: 1100px; margin: 8px auto 60px; padding: 0 16px; color: #6b7280; font-size: 0.85rem; }
+      .btn-xs { font-size: 0.78rem; padding: 2px 8px; }
+    </style>
+  </head>
+  <body>
+    <div class="doc-head">
+      <h1>Locadora de Veículos — Mockups de alta fidelidade</h1>
+      <p><strong>Trabalho Prático 2</strong> · Front-end integrado à API do TP1</p>
+      <p>Telas em alta fidelidade, com as cores e os componentes reais do sistema e dados de exemplo do banco.</p>
+      <div class="indice">
+        <a href="#painel">Painel</a>
+        <a href="#veiculos">Veículos</a>
+        <a href="#alugueis">Aluguéis</a>
+        <a href="#clientes">Clientes</a>
+        <a href="#carteira">Carteira</a>
+        <a href="#cadastro">Cadastro (modal)</a>
+        <a href="#fabricantes">Fabricantes</a>
+        <a href="#categorias">Categorias</a>
+      </div>
+    </div>
+
+    <!-- ===================== PAINEL ===================== -->
+    <div class="tela-wrap" id="painel">
+      <p class="tela-titulo">1. Painel</p>
+      <p class="tela-desc">Indicadores e consultas vindas do banco, exibidas via rotas da API.</p>
+      <div class="browser">
+        <div class="browser-bar"><i class="dot-r"></i><i class="dot-y"></i><i class="dot-g"></i><span class="browser-url">localhost:5500/index.html</span></div>
+        <div class="browser-body">
+          <div class="app-nav"><span class="brand"><span class="car">&#128663;</span> Locadora de Veículos</span><span class="links"><span class="ativo">Painel</span><span>Veículos</span><span>Aluguéis</span><span>Clientes</span><span>Carteira</span><span>Fabricantes</span><span>Categorias</span></span></div>
+          <div class="app-content">
+            <div class="page-header"><h1>Painel da locadora</h1><span class="text-muted">Visão geral e consultas ao banco</span></div>
+            <div class="row g-3 mb-4">
+              <div class="col-6 col-lg-3"><div class="card stat-card h-100"><div class="card-body"><div class="stat-rotulo">Veículos</div><div class="stat-valor">10</div></div></div></div>
+              <div class="col-6 col-lg-3"><div class="card stat-card h-100"><div class="card-body"><div class="stat-rotulo">Disponíveis</div><div class="stat-valor text-success">9</div></div></div></div>
+              <div class="col-6 col-lg-3"><div class="card stat-card h-100"><div class="card-body"><div class="stat-rotulo">Aluguéis em aberto</div><div class="stat-valor text-primary">1</div></div></div></div>
+              <div class="col-6 col-lg-3"><div class="card stat-card h-100"><div class="card-body"><div class="stat-rotulo">Clientes</div><div class="stat-valor">5</div></div></div></div>
+            </div>
+            <div class="row g-4">
+              <div class="col-lg-6"><div class="card h-100"><div class="card-body">
+                <h5 class="card-title">Consulta: veículos por fabricante</h5>
+                <p class="text-muted small mb-2">Rota <code>GET /api/veiculos/filtros/veiculos-por-fabricante/{nome}</code></p>
+                <select class="form-select mb-3"><option>Toyota</option></select>
+                <table class="table table-sm table-hover mb-0"><thead><tr><th>Modelo</th><th>Placa</th><th>Ano</th></tr></thead>
+                <tbody><tr><td>Corolla</td><td>ABC1D23</td><td>2022</td></tr><tr><td>Hilux</td><td>EFG2H34</td><td>2021</td></tr></tbody></table>
+              </div></div></div>
+              <div class="col-lg-6"><div class="card h-100"><div class="card-body">
+                <h5 class="card-title">Consulta: clientes e nº de aluguéis</h5>
+                <p class="text-muted small mb-2">Rota <code>GET /api/clientes/filtros/clientes-com-alugueis</code></p>
+                <table class="table table-sm table-hover mb-0"><thead><tr><th>Cliente</th><th>E-mail</th><th class="text-end">Aluguéis</th></tr></thead>
+                <tbody>
+                  <tr><td>Ana Souza</td><td>ana.souza@email.com</td><td class="text-end">1</td></tr>
+                  <tr><td>Bruno Lima</td><td>bruno.lima@email.com</td><td class="text-end">1</td></tr>
+                  <tr><td>Carla Mendes</td><td>carla.mendes@email.com</td><td class="text-end">0</td></tr>
+                  <tr><td>Diego Rocha</td><td>diego.rocha@email.com</td><td class="text-end">0</td></tr>
+                  <tr><td>Eduarda Pinto</td><td>eduarda.pinto@email.com</td><td class="text-end">0</td></tr>
+                </tbody></table>
+              </div></div></div>
+              <div class="col-12"><div class="card"><div class="card-body">
+                <h5 class="card-title">Aluguéis em aberto</h5>
+                <p class="text-muted small mb-2">Rota <code>GET /api/alugueis/filtros/alugueis-em-aberto</code></p>
+                <table class="table table-sm table-hover mb-0"><thead><tr><th>#</th><th>Cliente</th><th>Veículo</th><th>Fabricante</th><th>Início</th><th>Fim previsto</th><th class="text-end">Diária</th></tr></thead>
+                <tbody><tr><td>1</td><td>Bruno Lima</td><td>Polo</td><td>Volkswagen</td><td>15/06/2026</td><td>22/06/2026</td><td class="text-end">R$ 140,00</td></tr></tbody></table>
+              </div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== VEÍCULOS ===================== -->
+    <div class="tela-wrap" id="veiculos">
+      <p class="tela-titulo">2. Veículos</p>
+      <p class="tela-desc">Listagem com busca por modelo/placa, fabricante e disponibilidade. Cadastro, edição e exclusão.</p>
+      <div class="browser">
+        <div class="browser-bar"><i class="dot-r"></i><i class="dot-y"></i><i class="dot-g"></i><span class="browser-url">localhost:5500/veiculos.html</span></div>
+        <div class="browser-body">
+          <div class="app-nav"><span class="brand"><span class="car">&#128663;</span> Locadora de Veículos</span><span class="links"><span>Painel</span><span class="ativo">Veículos</span><span>Aluguéis</span><span>Clientes</span><span>Carteira</span><span>Fabricantes</span><span>Categorias</span></span></div>
+          <div class="app-content">
+            <div class="page-header"><h1>Veículos</h1><button class="btn btn-primary">+ Novo veículo</button></div>
+            <div class="filtros-bar"><div class="row g-3">
+              <div class="col-md-4"><label class="form-label">Buscar por modelo ou placa</label><input class="form-control" placeholder="Ex.: Corolla ou ABC" /></div>
+              <div class="col-md-4"><label class="form-label">Fabricante</label><select class="form-select"><option>Todos</option></select></div>
+              <div class="col-md-4"><label class="form-label">Disponibilidade</label><select class="form-select"><option>Todos</option></select></div>
+            </div></div>
+            <div class="card"><div class="table-responsive"><table class="table table-hover align-middle mb-0">
+              <thead><tr><th>#</th><th>Modelo</th><th>Fabricante</th><th>Categoria</th><th>Ano</th><th>Placa</th><th class="text-end">Diária</th><th>Situação</th><th class="text-end">Ações</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>Corolla</td><td>Toyota</td><td>Sedã</td><td>2022</td><td>ABC1D23</td><td class="text-end">R$ 180,00</td><td><span class="badge badge-status-finalizado">Disponível</span></td><td class="text-end"><button class="btn btn-xs btn-outline-secondary">Editar</button> <button class="btn btn-xs btn-outline-danger">Excluir</button></td></tr>
+                <tr><td>2</td><td>Hilux</td><td>Toyota</td><td>Picape</td><td>2021</td><td>EFG2H34</td><td class="text-end">R$ 320,00</td><td><span class="badge badge-status-finalizado">Disponível</span></td><td class="text-end"><button class="btn btn-xs btn-outline-secondary">Editar</button> <button class="btn btn-xs btn-outline-danger">Excluir</button></td></tr>
+                <tr><td>3</td><td>Polo</td><td>Volkswagen</td><td>Hatch</td><td>2023</td><td>IJK3L45</td><td class="text-end">R$ 140,00</td><td><span class="badge badge-status-aberto">Alugado</span></td><td class="text-end"><button class="btn btn-xs btn-outline-secondary">Editar</button> <button class="btn btn-xs btn-outline-danger">Excluir</button></td></tr>
+                <tr><td>4</td><td>T-Cross</td><td>Volkswagen</td><td>SUV</td><td>2022</td><td>MNO4P56</td><td class="text-end">R$ 230,00</td><td><span class="badge badge-status-finalizado">Disponível</span></td><td class="text-end"><button class="btn btn-xs btn-outline-secondary">Editar</button> <button class="btn btn-xs btn-outline-danger">Excluir</button></td></tr>
+                <tr><td>5</td><td>Mobi</td><td>Fiat</td><td>Hatch</td><td>2020</td><td>QRS5T67</td><td class="text-end">R$ 110,00</td><td><span class="badge badge-status-finalizado">Disponível</span></td><td class="text-end"><button class="btn btn-xs btn-outline-secondary">Editar</button> <button class="btn btn-xs btn-outline-danger">Excluir</button></td></tr>
+                <tr><td>6</td><td>Toro</td><td>Fiat</td><td>Picape</td><td>2023</td><td>UVW6X78</td><td class="text-end">R$ 280,00</td><td><span class="badge badge-status-finalizado">Disponível</span></td><td class="text-end"><button class="btn btn-xs btn-outline-secondary">Editar</button> <button class="btn btn-xs btn-outline-danger">Excluir</button></td></tr>
+                <tr><td>7</td><td>Onix</td><td>Chevrolet</td><td>Hatch</td><td>2021</td><td>YZA7B89</td><td class="text-end">R$ 130,00</td><td><span class="badge badge-status-finalizado">Disponível</span></td><td class="text-end"><button class="btn btn-xs btn-outline-secondary">Editar</button> <button class="btn btn-xs btn-outline-danger">Excluir</button></td></tr>
+                <tr><td>8</td><td>Tracker</td><td>Chevrolet</td><td>SUV</td><td>2022</td><td>CDE8F90</td><td class="text-end">R$ 240,00</td><td><span class="badge badge-status-finalizado">Disponível</span></td><td class="text-end"><button class="btn btn-xs btn-outline-secondary">Editar</button> <button class="btn btn-xs btn-outline-danger">Excluir</button></td></tr>
+                <tr><td>9</td><td>Civic</td><td>Honda</td><td>Sedã</td><td>2023</td><td>GHI9J01</td><td class="text-end">R$ 210,00</td><td><span class="badge badge-status-finalizado">Disponível</span></td><td class="text-end"><button class="btn btn-xs btn-outline-secondary">Editar</button> <button class="btn btn-xs btn-outline-danger">Excluir</button></td></tr>
+                <tr><td>10</td><td>HR-V</td><td>Honda</td><td>SUV</td><td>2022</td><td>KLM0N12</td><td class="text-end">R$ 250,00</td><td><span class="badge badge-status-finalizado">Disponível</span></td><td class="text-end"><button class="btn btn-xs btn-outline-secondary">Editar</button> <button class="btn btn-xs btn-outline-danger">Excluir</button></td></tr>
+              </tbody>
+            </table></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== ALUGUÉIS ===================== -->
+    <div class="tela-wrap" id="alugueis">
+      <p class="tela-titulo">3. Aluguéis</p>
+      <p class="tela-desc">Criação, edição, exclusão e devolução. Filtros por cliente, situação e veículo.</p>
+      <div class="browser">
+        <div class="browser-bar"><i class="dot-r"></i><i class="dot-y"></i><i class="dot-g"></i><span class="browser-url">localhost:5500/alugueis.html</span></div>
+        <div class="browser-body">
+          <div class="app-nav"><span class="brand"><span class="car">&#128663;</span> Locadora de Veículos</span><span class="links"><span>Painel</span><span>Veículos</span><span class="ativo">Aluguéis</span><span>Clientes</span><span>Carteira</span><span>Fabricantes</span><span>Categorias</span></span></div>
+          <div class="app-content">
+            <div class="page-header"><h1>Aluguéis</h1><button class="btn btn-primary">+ Novo aluguel</button></div>
+            <div class="filtros-bar"><div class="row g-3">
+              <div class="col-md-4"><label class="form-label">Cliente</label><select class="form-select"><option>Todos</option></select></div>
+              <div class="col-md-4"><label class="form-label">Situação</label><select class="form-select"><option>Todas</option></select></div>
+              <div class="col-md-4"><label class="form-label">Buscar por veículo</label><input class="form-control" placeholder="Ex.: Polo" /></div>
+            </div></div>
+            <div class="card"><div class="table-responsive"><table class="table table-hover align-middle mb-0">
+              <thead><tr><th>#</th><th>Cliente</th><th>Veículo</th><th>Início</th><th>Fim previsto</th><th>Devolução</th><th class="text-end">Diária</th><th class="text-end">Total</th><th>Situação</th><th class="text-end">Ações</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>Bruno Lima</td><td>Polo</td><td>15/06/2026</td><td>22/06/2026</td><td>—</td><td class="text-end">R$ 140,00</td><td class="text-end">—</td><td><span class="badge badge-status-aberto">Em aberto</span></td><td class="text-end"><button class="btn btn-xs btn-success">Devolver</button> <button class="btn btn-xs btn-outline-secondary">Editar</button> <button class="btn btn-xs btn-outline-danger">Excluir</button></td></tr>
+                <tr><td>2</td><td>Ana Souza</td><td>Onix</td><td>02/05/2026</td><td>05/05/2026</td><td>05/05/2026</td><td class="text-end">R$ 130,00</td><td class="text-end">R$ 390,00</td><td><span class="badge badge-status-finalizado">Finalizado</span></td><td class="text-end"><button class="btn btn-xs btn-outline-danger">Excluir</button></td></tr>
+              </tbody>
+            </table></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== CLIENTES ===================== -->
+    <div class="tela-wrap" id="clientes">
+      <p class="tela-titulo">4. Clientes</p>
+      <p class="tela-desc">Cadastro, edição, exclusão e busca por nome e CPF/e-mail. Coluna de saldo e atalho para a carteira.</p>
+      <div class="browser">
+        <div class="browser-bar"><i class="dot-r"></i><i class="dot-y"></i><i class="dot-g"></i><span class="browser-url">localhost:5500/clientes.html</span></div>
+        <div class="browser-body">
+          <div class="app-nav"><span class="brand"><span class="car">&#128663;</span> Locadora de Veículos</span><span class="links"><span>Painel</span><span>Veículos</span><span>Aluguéis</span><span class="ativo">Clientes</span><span>Carteira</span><span>Fabricantes</span><span>Categorias</span></span></div>
+          <div class="app-content">
+            <div class="page-header"><h1>Clientes</h1><button class="btn btn-primary">+ Novo cliente</button></div>
+            <div class="filtros-bar"><div class="row g-3">
+              <div class="col-md-6"><label class="form-label">Buscar por nome</label><input class="form-control" placeholder="Ex.: Ana" /></div>
+              <div class="col-md-6"><label class="form-label">Buscar por CPF ou e-mail</label><input class="form-control" placeholder="Ex.: 111 ou email@..." /></div>
+            </div></div>
+            <div class="card"><div class="table-responsive"><table class="table table-hover align-middle mb-0">
+              <thead><tr><th>#</th><th>Nome</th><th>CPF</th><th>E-mail</th><th>Telefone</th><th class="text-end">Saldo</th><th class="text-end">Ações</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>Ana Souza</td><td>11122233344</td><td>ana.souza@email.com</td><td>31988887777</td><td class="text-end fw-semibold">R$ 110,00</td><td class="text-end"><button class="btn btn-xs btn-outline-success">Carteira</button> <button class="btn btn-xs btn-outline-secondary">Editar</button> <button class="btn btn-xs btn-outline-danger">Excluir</button></td></tr>
+                <tr><td>2</td><td>Bruno Lima</td><td>22233344455</td><td>bruno.lima@email.com</td><td>31977776666</td><td class="text-end fw-semibold">R$ 1.200,00</td><td class="text-end"><button class="btn btn-xs btn-outline-success">Carteira</button> <button class="btn btn-xs btn-outline-secondary">Editar</button> <button class="btn btn-xs btn-outline-danger">Excluir</button></td></tr>
+                <tr><td>3</td><td>Carla Mendes</td><td>33344455566</td><td>carla.mendes@email.com</td><td>31966665555</td><td class="text-end fw-semibold">R$ 0,00</td><td class="text-end"><button class="btn btn-xs btn-outline-success">Carteira</button> <button class="btn btn-xs btn-outline-secondary">Editar</button> <button class="btn btn-xs btn-outline-danger">Excluir</button></td></tr>
+                <tr><td>4</td><td>Diego Rocha</td><td>44455566677</td><td>diego.rocha@email.com</td><td>31955554444</td><td class="text-end fw-semibold">R$ 350,00</td><td class="text-end"><button class="btn btn-xs btn-outline-success">Carteira</button> <button class="btn btn-xs btn-outline-secondary">Editar</button> <button class="btn btn-xs btn-outline-danger">Excluir</button></td></tr>
+                <tr><td>5</td><td>Eduarda Pinto</td><td>55566677788</td><td>eduarda.pinto@email.com</td><td>31944443333</td><td class="text-end fw-semibold">R$ 800,00</td><td class="text-end"><button class="btn btn-xs btn-outline-success">Carteira</button> <button class="btn btn-xs btn-outline-secondary">Editar</button> <button class="btn btn-xs btn-outline-danger">Excluir</button></td></tr>
+              </tbody>
+            </table></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== CARTEIRA ===================== -->
+    <div class="tela-wrap" id="carteira">
+      <p class="tela-titulo">5. Carteira</p>
+      <p class="tela-desc">Consulta de saldo, recarga e extrato de transações (recarga e pagamento).</p>
+      <div class="browser">
+        <div class="browser-bar"><i class="dot-r"></i><i class="dot-y"></i><i class="dot-g"></i><span class="browser-url">localhost:5500/carteira.html?cliente=1</span></div>
+        <div class="browser-body">
+          <div class="app-nav"><span class="brand"><span class="car">&#128663;</span> Locadora de Veículos</span><span class="links"><span>Painel</span><span>Veículos</span><span>Aluguéis</span><span>Clientes</span><span class="ativo">Carteira</span><span>Fabricantes</span><span>Categorias</span></span></div>
+          <div class="app-content">
+            <div class="page-header"><h1>Carteira do cliente</h1></div>
+            <div class="row g-3 mb-3"><div class="col-md-5"><label class="form-label">Cliente</label><select class="form-select"><option>Ana Souza</option></select></div></div>
+            <div class="row g-3 mb-3">
+              <div class="col-md-5"><div class="card stat-card h-100"><div class="card-body">
+                <div class="stat-rotulo">Saldo atual</div><div class="saldo-destaque text-success">R$ 110,00</div><div class="text-muted">Ana Souza</div>
+              </div></div></div>
+              <div class="col-md-7"><div class="card h-100"><div class="card-body">
+                <h5 class="card-title">Recarregar saldo</h5>
+                <div class="row g-2 align-items-end">
+                  <div class="col-sm-5"><label class="form-label">Valor (R$)</label><input class="form-control" /></div>
+                  <div class="col-sm-5"><label class="form-label">Descrição</label><input class="form-control" placeholder="Opcional" /></div>
+                  <div class="col-sm-2 d-grid"><button class="btn btn-success">Recarregar</button></div>
+                </div>
+              </div></div></div>
+            </div>
+            <div class="card"><div class="card-body pb-0"><h5 class="card-title">Extrato de transações</h5></div>
+              <div class="table-responsive"><table class="table table-hover align-middle mb-0">
+                <thead><tr><th>Data</th><th>Tipo</th><th>Descrição</th><th class="text-end">Valor</th></tr></thead>
+                <tbody>
+                  <tr><td>05/05/2026, 17:00:00</td><td><span class="text-danger fw-semibold">Pagamento</span></td><td>Pagamento do aluguel #2 (Onix)</td><td class="text-end text-danger fw-semibold">- R$ 390,00</td></tr>
+                  <tr><td>10/01/2026, 09:00:00</td><td><span class="text-success fw-semibold">Recarga</span></td><td>Recarga inicial</td><td class="text-end text-success fw-semibold">+ R$ 500,00</td></tr>
+                </tbody>
+              </table></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== CADASTRO (MODAL) ===================== -->
+    <div class="tela-wrap" id="cadastro">
+      <p class="tela-titulo">6. Cadastro / edição (modal)</p>
+      <p class="tela-desc">Formulário de cadastro e edição, exemplo do veículo, exibido em janela modal sobre a tela.</p>
+      <div class="browser">
+        <div class="browser-bar"><i class="dot-r"></i><i class="dot-y"></i><i class="dot-g"></i><span class="browser-url">localhost:5500/veiculos.html</span></div>
+        <div class="browser-body" style="position:relative;">
+          <div class="app-nav"><span class="brand"><span class="car">&#128663;</span> Locadora de Veículos</span><span class="links"><span>Painel</span><span class="ativo">Veículos</span><span>Aluguéis</span><span>Clientes</span><span>Carteira</span><span>Fabricantes</span><span>Categorias</span></span></div>
+          <div class="app-content" style="background:#f4f6f9;">
+            <div style="background:rgba(33,37,41,0.45); border-radius:8px; padding:26px;">
+              <div class="card" style="max-width:720px; margin:0 auto;">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-center mb-3"><h5 class="mb-0">Novo veículo</h5><span class="text-muted" style="font-size:1.3rem;">&times;</span></div>
+                  <div class="row">
+                    <div class="col-md-6 mb-3"><label class="form-label">Modelo *</label><input class="form-control" value="Kwid" /></div>
+                    <div class="col-md-3 mb-3"><label class="form-label">Ano *</label><input class="form-control" value="2024" /></div>
+                    <div class="col-md-3 mb-3"><label class="form-label">Placa *</label><input class="form-control" value="ABC1D45" /></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4 mb-3"><label class="form-label">Fabricante *</label><select class="form-select"><option>Renault</option></select></div>
+                    <div class="col-md-4 mb-3"><label class="form-label">Categoria *</label><select class="form-select"><option>Hatch</option></select></div>
+                    <div class="col-md-4 mb-3"><label class="form-label">Cor</label><input class="form-control" value="Branco" /></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4 mb-3"><label class="form-label">Quilometragem atual</label><input class="form-control" value="0" /></div>
+                    <div class="col-md-4 mb-3"><label class="form-label">Valor da diária (R$) *</label><input class="form-control" value="119,90" /></div>
+                    <div class="col-md-4 mb-3 d-flex align-items-end"><div class="form-check form-switch"><input class="form-check-input" type="checkbox" checked /><label class="form-check-label">Disponível para aluguel</label></div></div>
+                  </div>
+                  <div class="d-flex justify-content-end gap-2"><button class="btn btn-secondary">Cancelar</button><button class="btn btn-primary">Salvar</button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== FABRICANTES ===================== -->
+    <div class="tela-wrap" id="fabricantes">
+      <p class="tela-titulo">7. Fabricantes</p>
+      <p class="tela-desc">Cadastro, edição, exclusão e busca por nome e país de origem.</p>
+      <div class="browser">
+        <div class="browser-bar"><i class="dot-r"></i><i class="dot-y"></i><i class="dot-g"></i><span class="browser-url">localhost:5500/fabricantes.html</span></div>
+        <div class="browser-body">
+          <div class="app-nav"><span class="brand"><span class="car">&#128663;</span> Locadora de Veículos</span><span class="links"><span>Painel</span><span>Veículos</span><span>Aluguéis</span><span>Clientes</span><span>Carteira</span><span class="ativo">Fabricantes</span><span>Categorias</span></span></div>
+          <div class="app-content">
+            <div class="page-header"><h1>Fabricantes</h1><button class="btn btn-primary">+ Novo fabricante</button></div>
+            <div class="filtros-bar"><div class="row g-3">
+              <div class="col-md-6"><label class="form-label">Buscar por nome</label><input class="form-control" placeholder="Ex.: Toyota" /></div>
+              <div class="col-md-6"><label class="form-label">Filtrar por país de origem</label><input class="form-control" placeholder="Ex.: Japão" /></div>
+            </div></div>
+            <div class="card"><div class="table-responsive"><table class="table table-hover align-middle mb-0">
+              <thead><tr><th>#</th><th>Nome</th><th>País de origem</th><th class="text-end">Ações</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>Toyota</td><td>Japão</td><td class="text-end"><button class="btn btn-xs btn-outline-secondary">Editar</button> <button class="btn btn-xs btn-outline-danger">Excluir</button></td></tr>
+                <tr><td>2</td><td>Volkswagen</td><td>Alemanha</td><td class="text-end"><button class="btn btn-xs btn-outline-secondary">Editar</button> <button class="btn btn-xs btn-outline-danger">Excluir</button></td></tr>
+                <tr><td>3</td><td>Fiat</td><td>Itália</td><td class="text-end"><button class="btn btn-xs btn-outline-secondary">Editar</button> <button class="btn btn-xs btn-outline-danger">Excluir</button></td></tr>
+                <tr><td>4</td><td>Chevrolet</td><td>Estados Unidos</td><td class="text-end"><button class="btn btn-xs btn-outline-secondary">Editar</button> <button class="btn btn-xs btn-outline-danger">Excluir</button></td></tr>
+                <tr><td>5</td><td>Honda</td><td>Japão</td><td class="text-end"><button class="btn btn-xs btn-outline-secondary">Editar</button> <button class="btn btn-xs btn-outline-danger">Excluir</button></td></tr>
+              </tbody>
+            </table></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== CATEGORIAS ===================== -->
+    <div class="tela-wrap" id="categorias">
+      <p class="tela-titulo">8. Categorias</p>
+      <p class="tela-desc">Cadastro, edição, exclusão e busca por nome e descrição.</p>
+      <div class="browser">
+        <div class="browser-bar"><i class="dot-r"></i><i class="dot-y"></i><i class="dot-g"></i><span class="browser-url">localhost:5500/categorias.html</span></div>
+        <div class="browser-body">
+          <div class="app-nav"><span class="brand"><span class="car">&#128663;</span> Locadora de Veículos</span><span class="links"><span>Painel</span><span>Veículos</span><span>Aluguéis</span><span>Clientes</span><span>Carteira</span><span>Fabricantes</span><span class="ativo">Categorias</span></span></div>
+          <div class="app-content">
+            <div class="page-header"><h1>Categorias de veículo</h1><button class="btn btn-primary">+ Nova categoria</button></div>
+            <div class="filtros-bar"><div class="row g-3">
+              <div class="col-md-6"><label class="form-label">Buscar por nome</label><input class="form-control" placeholder="Ex.: SUV" /></div>
+              <div class="col-md-6"><label class="form-label">Buscar na descrição</label><input class="form-control" placeholder="Ex.: urbano" /></div>
+            </div></div>
+            <div class="card"><div class="table-responsive"><table class="table table-hover align-middle mb-0">
+              <thead><tr><th>#</th><th>Nome</th><th>Descrição</th><th class="text-end">Ações</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>Hatch</td><td>Compactos de uso urbano</td><td class="text-end"><button class="btn btn-xs btn-outline-secondary">Editar</button> <button class="btn btn-xs btn-outline-danger">Excluir</button></td></tr>
+                <tr><td>2</td><td>Sedã</td><td>Porta-malas amplo e conforto</td><td class="text-end"><button class="btn btn-xs btn-outline-secondary">Editar</button> <button class="btn btn-xs btn-outline-danger">Excluir</button></td></tr>
+                <tr><td>3</td><td>SUV</td><td>Utilitários esportivos</td><td class="text-end"><button class="btn btn-xs btn-outline-secondary">Editar</button> <button class="btn btn-xs btn-outline-danger">Excluir</button></td></tr>
+                <tr><td>4</td><td>Picape</td><td>Veículos de carga leve</td><td class="text-end"><button class="btn btn-xs btn-outline-secondary">Editar</button> <button class="btn btn-xs btn-outline-danger">Excluir</button></td></tr>
+              </tbody>
+            </table></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="legenda-final">
+      Mockups de alta fidelidade do Trabalho Prático 2. As telas reproduzem o front-end real (HTML, Bootstrap e
+      JavaScript) integrado à API da locadora, com dados de exemplo do banco. A carteira cobre recarga, consulta de
+      saldo e pagamento.
+    </p>
+  </body>
+</html>
