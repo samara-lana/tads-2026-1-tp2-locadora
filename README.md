@@ -94,11 +94,6 @@ Wireframes de alta fidelidade das telas, feitos no Figma:
 
 **https://www.figma.com/design/xNIYJ8W7bnmYKXvdAwl5oA/Locadora-de-Ve%C3%ADculos-%E2%80%94-Template--TADS-2026-1-TP2-?node-id=0-1**
 
-Também há uma galeria navegável das telas (alta fidelidade, com as cores reais e
-dados de exemplo) publicada no GitHub Pages:
-
-**https://samara-lana.github.io/tads-2026-1-tp2-locadora/**
-
 ## Como executar
 
 Pré-requisitos: .NET 10 SDK e SQL Server (Express serve). A string de conexão
