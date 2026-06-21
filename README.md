@@ -94,6 +94,8 @@ Wireframes de alta fidelidade das telas, feitos no Figma:
 
 **https://www.figma.com/design/xNIYJ8W7bnmYKXvdAwl5oA/Locadora-de-Ve%C3%ADculos-%E2%80%94-Template--TADS-2026-1-TP2-?node-id=0-1**
 
+Versão exportada (PDF) em `Projeto_Locadora/docs/wireframes/Wireframes-Locadora-TP2.pdf`.
+
 ## Como executar
 
 Pré-requisitos: .NET 10 SDK e SQL Server (Express serve). A string de conexão
