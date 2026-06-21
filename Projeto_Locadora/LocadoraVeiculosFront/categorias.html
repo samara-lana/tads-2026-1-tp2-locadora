@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Categorias | Locadora de Veículos</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="navbar"></div>
+
+    <main class="container">
+      <div class="page-header">
+        <h1>Categorias de veículo</h1>
+        <button class="btn btn-primary" id="btnNovo">+ Nova categoria</button>
+      </div>
+
+      <div class="filtros-bar">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label">Buscar por nome</label>
+            <input type="text" class="form-control" id="filtroNome" placeholder="Ex.: SUV" />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Buscar na descrição</label>
+            <input type="text" class="form-control" id="filtroDescricao" placeholder="Ex.: urbano" />
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th class="text-end">Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tabela"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <footer class="rodape">Locadora de Veículos &middot; Trabalho Prático 2</footer>
+
+    <div class="modal fade" id="modalForm" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form id="formCategoria">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalTitulo">Nova categoria</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" id="campoId" />
+              <div class="mb-3">
+                <label class="form-label">Nome *</label>
+                <input type="text" class="form-control" id="campoNome" maxlength="60" required />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Descrição</label>
+                <textarea class="form-control" id="campoDescricao" maxlength="200" rows="2"></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/categorias.js"></script>
+  </body>
+</html>
