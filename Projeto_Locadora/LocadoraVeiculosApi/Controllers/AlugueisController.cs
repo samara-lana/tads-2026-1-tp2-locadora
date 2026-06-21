@@ -121,46 +121,62 @@ namespace LocadoraVeiculosApi.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create(Aluguel aluguel)
+        public async Task<ActionResult> Create(AluguelInputDto dto)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            if (aluguel.DataFimPrevista <= aluguel.DataInicio)
+            if (dto.DataFimPrevista <= dto.DataInicio)
                 return BadRequest(new { mensagem = "A data final prevista deve ser maior que a data inicial." });
 
-            var cliente = await _context.Clientes.FindAsync(aluguel.ClienteId);
+            var cliente = await _context.Clientes.FindAsync(dto.ClienteId);
             if (cliente == null)
                 return BadRequest(new { mensagem = "Cliente não encontrado." });
 
-            var veiculo = await _context.Veiculos.FindAsync(aluguel.VeiculoId);
+            var veiculo = await _context.Veiculos.FindAsync(dto.VeiculoId);
             if (veiculo == null)
                 return BadRequest(new { mensagem = "Veículo não encontrado." });
 
             if (!veiculo.Disponivel)
                 return BadRequest(new { mensagem = "Veículo indisponível para aluguel." });
 
-            aluguel.QuilometragemInicial = veiculo.QuilometragemAtual;
-            aluguel.ValorDiaria = veiculo.ValorDiariaBase;
-            aluguel.Status = StatusAluguel.Aberto;
-            aluguel.ValorTotal = null;
-            aluguel.QuilometragemFinal = null;
-            aluguel.DataDevolucao = null;
+            var aluguel = new Aluguel
+            {
+                ClienteId = dto.ClienteId,
+                VeiculoId = dto.VeiculoId,
+                DataInicio = dto.DataInicio,
+                DataFimPrevista = dto.DataFimPrevista,
+                QuilometragemInicial = veiculo.QuilometragemAtual,
+                ValorDiaria = veiculo.ValorDiariaBase,
+                Status = StatusAluguel.Aberto,
+                ValorTotal = null,
+                QuilometragemFinal = null,
+                DataDevolucao = null
+            };
 
             veiculo.Disponivel = false;
 
             _context.Alugueis.Add(aluguel);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetById), new { id = aluguel.Id }, aluguel);
+            var resultado = new
+            {
+                aluguel.Id,
+                aluguel.ClienteId,
+                aluguel.VeiculoId,
+                aluguel.DataInicio,
+                aluguel.DataFimPrevista,
+                aluguel.QuilometragemInicial,
+                aluguel.ValorDiaria,
+                aluguel.Status
+            };
+
+            return CreatedAtAction(nameof(GetById), new { id = aluguel.Id }, resultado);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, Aluguel aluguel)
+        public async Task<IActionResult> Update(int id, AluguelInputDto dto)
         {
-            if (id != aluguel.Id)
-                return BadRequest(new { mensagem = "ID inválido." });
-
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
@@ -174,21 +190,21 @@ namespace LocadoraVeiculosApi.Controllers
             if (aluguelExistente.Status != StatusAluguel.Aberto)
                 return BadRequest(new { mensagem = "Somente aluguéis em aberto podem ser alterados." });
 
-            if (aluguel.DataFimPrevista <= aluguel.DataInicio)
+            if (dto.DataFimPrevista <= dto.DataInicio)
                 return BadRequest(new { mensagem = "A data final prevista deve ser maior que a data inicial." });
 
-            if (aluguel.ClienteId != aluguelExistente.ClienteId)
+            if (dto.ClienteId != aluguelExistente.ClienteId)
             {
-                var clienteExiste = await _context.Clientes.AnyAsync(c => c.Id == aluguel.ClienteId);
+                var clienteExiste = await _context.Clientes.AnyAsync(c => c.Id == dto.ClienteId);
                 if (!clienteExiste)
                     return BadRequest(new { mensagem = "Cliente não encontrado." });
 
-                aluguelExistente.ClienteId = aluguel.ClienteId;
+                aluguelExistente.ClienteId = dto.ClienteId;
             }
 
-            if (aluguel.VeiculoId != aluguelExistente.VeiculoId)
+            if (dto.VeiculoId != aluguelExistente.VeiculoId)
             {
-                var novoVeiculo = await _context.Veiculos.FindAsync(aluguel.VeiculoId);
+                var novoVeiculo = await _context.Veiculos.FindAsync(dto.VeiculoId);
                 if (novoVeiculo == null)
                     return BadRequest(new { mensagem = "Novo veículo não encontrado." });
 
@@ -200,13 +216,13 @@ namespace LocadoraVeiculosApi.Controllers
 
                 novoVeiculo.Disponivel = false;
 
-                aluguelExistente.VeiculoId = aluguel.VeiculoId;
+                aluguelExistente.VeiculoId = dto.VeiculoId;
                 aluguelExistente.QuilometragemInicial = novoVeiculo.QuilometragemAtual;
                 aluguelExistente.ValorDiaria = novoVeiculo.ValorDiariaBase;
             }
 
-            aluguelExistente.DataInicio = aluguel.DataInicio;
-            aluguelExistente.DataFimPrevista = aluguel.DataFimPrevista;
+            aluguelExistente.DataInicio = dto.DataInicio;
+            aluguelExistente.DataFimPrevista = dto.DataFimPrevista;
 
             await _context.SaveChangesAsync();
 
