@@ -88,14 +88,16 @@ Rotas da carteira (recarga, saldo e pagamento):
 - `POST /api/clientes/{id}/recarga` — adiciona crédito ao saldo.
 - `PUT  /api/alugueis/{id}/devolucao` — finaliza o aluguel e debita o pagamento.
 
-## Mockups de alta fidelidade
+## Wireframes
 
-Mockups de alta fidelidade das telas (com as cores reais do sistema e dados de
-exemplo) estão publicados no GitHub Pages:
+Wireframes de alta fidelidade das telas, feitos no Figma:
+
+**https://www.figma.com/design/xNIYJ8W7bnmYKXvdAwl5oA/Locadora-de-Ve%C3%ADculos-%E2%80%94-Template--TADS-2026-1-TP2-?node-id=0-1**
+
+Também há uma galeria navegável das telas (alta fidelidade, com as cores reais e
+dados de exemplo) publicada no GitHub Pages:
 
 **https://samara-lana.github.io/tads-2026-1-tp2-locadora/**
-
-O código-fonte da galeria está em `docs/index.html`.
 
 ## Como executar
 
