@@ -1,0 +1,16 @@
+# .NET
+[Bb]in/
+[Oo]bj/
+.vs/
+*.user
+
+# Banco local (LocalDB / arquivos)
+*.mdf
+*.ldf
+
+# Sistema
+Thumbs.db
+.DS_Store
+
+# Logs
+*.log
