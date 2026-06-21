@@ -128,5 +128,5 @@ está em `Projeto_Locadora/LocadoraVeiculosApi/appsettings.json`.
 Projeto_Locadora/
   LocadoraVeiculosApi/     back-end (API + EF + seed)
   LocadoraVeiculosFront/   front-end (HTML/Bootstrap/JS)
-  docs/                    wireframes e roteiro do pitch
+  docs/wireframes/         wireframes (PDF exportado do Figma)
 ```
