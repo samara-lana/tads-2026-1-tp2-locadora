@@ -20,8 +20,9 @@ function montarNavbar(paginaAtual) {
   const html = `
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="index.html">
-        <span class="text-warning">&#128663;</span> Locadora de Veículos
+      <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="index.html">
+        <img src="img/logo.svg" width="30" height="30" alt="Locap" />
+        <span>Locap <span class="fw-normal text-secondary d-none d-sm-inline" style="font-size:0.78rem;">Locadora de Veículos</span></span>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
         <span class="navbar-toggler-icon"></span>

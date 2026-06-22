@@ -1,8 +1,8 @@
-# Locadora de Veículos — Trabalho Prático 2
+# Locap — Locadora de Veículos (Trabalho Prático 2)
 
-Sistema web para uma locadora de veículos. O front-end foi construído nesta
-etapa e está integrado à API desenvolvida no Trabalho Prático 1, que por sua vez
-persiste os dados em um banco SQL Server.
+Sistema web para uma locadora de veículos, o **Locap**. O front-end foi
+construído nesta etapa e está integrado à API desenvolvida no Trabalho Prático 1,
+que por sua vez persiste os dados em um banco SQL Server.
 
 ## O problema
 

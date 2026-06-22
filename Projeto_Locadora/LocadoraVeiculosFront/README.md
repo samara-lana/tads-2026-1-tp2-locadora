@@ -1,4 +1,4 @@
-# Front-end — Locadora de Veículos (TP2)
+# Front-end — Locap (Locadora de Veículos · TP2)
 
 Front-end em HTML, Bootstrap 5 e JavaScript puro, integrado à API
 `LocadoraVeiculosApi` via `fetch`.
