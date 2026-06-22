@@ -116,6 +116,16 @@ namespace LocadoraVeiculosApi.Controllers
             if (!fabricanteExiste || !categoriaExiste)
                 return BadRequest(new { mensagem = "Fabricante ou categoria inválidos." });
 
+            // Não permite marcar como disponível um veículo que ainda tem aluguel em aberto.
+            if (veiculo.Disponivel)
+            {
+                bool temAluguelAberto = await _context.Alugueis
+                    .AnyAsync(a => a.VeiculoId == id && a.Status == StatusAluguel.Aberto);
+
+                if (temAluguelAberto)
+                    return BadRequest(new { mensagem = "Veículo possui aluguel em aberto e não pode ser marcado como disponível. Registre a devolução primeiro." });
+            }
+
             existente.Modelo = veiculo.Modelo;
             existente.AnoFabricacao = veiculo.AnoFabricacao;
             existente.QuilometragemAtual = veiculo.QuilometragemAtual;
